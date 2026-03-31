@@ -47,6 +47,7 @@ http://localhost:4321
 | `npm run preview` | 本地预览构建结果 |
 | `npm run astro -- --help` | 查看 Astro CLI 帮助 |
 | `npm run push` | 自动提交并推送当前改动 |
+| `npm run rollback` | 回退最近一次提交并推送 |
 
 ## 写文章流程
 
@@ -156,6 +157,39 @@ bash scripts/push.sh "feat: add new post"
 
 注意：这个脚本会把当前所有变更一起提交，使用前先确认工作区内容符合预期。
 
+## 回退脚本
+
+项目还提供了一个安全回退脚本：
+
+```bash
+npm run rollback
+```
+
+它会调用：
+
+[`scripts/rollback.sh`](/Users/hpyi/Blog/scripts/rollback.sh#L1)
+
+默认行为：
+
+1. 检查当前目录是否为 Git 仓库
+2. 检查工作区是否干净
+3. 对最近一次提交执行 `git revert`
+4. 自动 `git push`
+
+如果你想回退指定提交，也可以直接执行：
+
+```bash
+bash scripts/rollback.sh <commit>
+```
+
+例如：
+
+```bash
+bash scripts/rollback.sh HEAD
+```
+
+这个脚本不会改写 Git 历史，而是新增一个“反向提交”来撤销之前的改动。对已经推送到远程的博客仓库，这种方式比 `reset --hard` 更安全。
+
 ## 部署方式
 
 当前推荐部署链路：
@@ -209,4 +243,8 @@ export const SITE_DESCRIPTION = '一个只写 Markdown 的极简中文博客。'
 
 如果后面这个博客继续演进，README 还可以再补：
 
-- 不知道啊
+- 发文命名规范
+- 标签规范
+- 图片压缩规范
+- SEO 写作约定
+- 常见故障排查
