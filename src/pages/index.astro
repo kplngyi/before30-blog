@@ -6,44 +6,87 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<p class="eyebrow">blog.before30.site</p>
+				<h1>写给未来的自己，也写给正在路上的人。</h1>
+				<p class="intro">
+					这里是一个极简中文博客，使用 Astro 生成静态页面，平时只需要在
+					<code>src/content/blog/</code> 里写 Markdown。
+				</p>
+				<div class="actions">
+					<a class="primary" href="/blog">开始阅读</a>
+					<a href="/about">关于这个博客</a>
+				</div>
+			</section>
+			<section class="notes">
+				<h2>写作方式</h2>
+				<p>每篇文章都是一个 Markdown 文件，支持标题、摘要、发布日期和标签。</p>
+				<h2>部署方式</h2>
+				<p>本地写作并推送到 GitHub，服务器拉取代码后重新构建即可上线。</p>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.hero {
+		padding: 4rem 0 2rem;
+	}
+	.eyebrow {
+		margin-bottom: 1rem;
+		color: rgb(var(--gray));
+		font-size: 0.95rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.intro {
+		max-width: 42rem;
+		font-size: 1.05rem;
+		color: rgb(var(--gray-dark));
+	}
+	.actions {
+		display: flex;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.actions a {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.8rem 1.1rem;
+		border: 1px solid rgba(var(--gray), 0.25);
+		border-radius: 999px;
+		text-decoration: none;
+		color: rgb(var(--black));
+	}
+	.actions a.primary {
+		background: var(--accent);
+		color: white;
+		border-color: var(--accent);
+	}
+	.notes {
+		padding: 1rem 0 3rem;
+	}
+	.notes h2 {
+		font-size: 1.2rem;
+		margin-top: 2rem;
+	}
+	@media (max-width: 720px) {
+		.hero {
+			padding-top: 2rem;
+		}
+		.actions {
+			flex-direction: column;
+		}
+		.actions a {
+			justify-content: center;
+		}
+	}
+</style>
