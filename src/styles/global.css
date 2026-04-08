@@ -4,6 +4,8 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+@import "katex/dist/katex.min.css";
+
 :root {
 	--accent: #205d4a;
 	--accent-dark: #164436;
@@ -124,6 +126,15 @@ blockquote {
 hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
+}
+.katex-display {
+	margin: 1.5rem 0;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding: 0.25rem 0;
+}
+.katex {
+	max-width: 100%;
 }
 @media (max-width: 720px) {
 	body {
